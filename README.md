@@ -29,3 +29,18 @@ We need to import the requests module in order to mak a server request by GET or
 One of the methods in the requests module is the .post() method.  While it has many important arguments/parameters, the most important one is the URL of the server.  Another optional argument is "data" which will include any form data that you need to send.  This is generally of a type tuple or list or dictionary.
 In our example file client.py we are making a post request using a dictionary.
 
+## Assignment
+Add new quotes by POST
+Last class, we created an API endpoint that connected to a Flask server, providing quotes/facts/jokes when GET requests were made.  Today, we will extend the functionality by adding an endpoint that only serves POST requests; we can add on to that existing assignment, or if you want you can create a separate assignment that connects to the same dbase file.
+We will be sending it a dictionary that must contain (at a minimum) the following information:
+* the quote
+* a SHA256 hashed key (for security). You will build this into your program without the need for the user to enter it.  What is SHA256?  You can read about it here: https://xorbin.com/tools/sha256-hash-calculator and you can also generate a SHA256 hash from a random phrase.
+
+Your client script will ask the user for a quote/joke.
+The client will send a payoad that contains the key, the quote/joke along with any other information you may need (you might specify the name of the table or database
+The server script will search for similar entries in the database, and if there is no math, it will add it to the database.  You may want to consider the use of wildcards to help you out: https://www.sqlitetutorial.net/sqlite-like/. You can view the 'sqlLike.py' file for an example.
+
+Other functionality:
+Write another client script and api endpoint that do the following:
+Client Script requests a list of all quotes/jokes from the server.  When it retrieves a result, it displays them all to the user in alphabetical order for ease of viewing
+Server script should have an endpoint that allows for retrieval of ALL quotes, sorted into alphabetical order.
