@@ -13,9 +13,23 @@ def main():
     #response is not json encoded
     return "Hello World (use /help endpoint for a list of options)"
 
+@app.route("/post",methods=['POST'])
+def postData():
+    #sample url: http://127.0.0.1:5000/post
+    #not accessible from a browser because it must be a post request
+    #response is a json encoded string that includes the payload
+    #payload is retrieved as data and then converted to a dict
+    #dict is echoed back
+    data = request.form
+    data = dict(data)
+    if 'greeting' not in data:
+        data['greeting'] = "Hello!"
+    return json.dumps(data)
+
+
 @app.route("/help",methods=['GET','POST'])
 def help():
-    #sample url: http://127.0.0.1:5000/
+    #sample url: http://127.0.0.1:5000/help 
     #output: multline string literal.  Displays endpoint options
     #may use GET or POST methods
     #response is not json encoded

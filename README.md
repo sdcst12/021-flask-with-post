@@ -2,39 +2,30 @@
 ### Flask!
 
 Objectives:
-* To create a basic flask server
-* To create an endpoint for an API
-* Add file data to a sqlite database
+* To create a basic flask server that receives form data
+* To have a flask server respond to a post request
+* Create a client python file that can make a post request to a server
 
-A lot of the behind the scenes work on the Internet is handled by API requests and access to things that are not normally accessible to the WWW side.  One way of accessing server side data is the use of an API endpoint, and Flask is a python module that allows us to create a flask server.
+### POST Requests
+There are two standard methods by which a server can serve a request/response: GET and POST.
 
-This is an example of a server side application, where all of the programming happens in a way that the user can't see any of the source code. This is different from the way that html files work, where all of the javascript is publicly viewable in your browser.
+GET requests are the ones that are made in the URL, and are generally made using a browser. When you go to Google and search for cats, you can use this URL: https://www.google.com/search?q=cats  
+This is an example of a GET method, where the information to be sent is included in the URL.
 
-We set up a Flask server in a way that is different from setting up an html server, but the end result can look largely the same.
+POST Requests are hidden. This is very important when you don't want sensitive data (such as passwords or cryptographic keys) to be displayed or visible in the URL.  We instead embed data inside the request itself which is received by the server.
 
-You will need to install 2 modules today:
-flask : py -m pip install flask
-    This allows you to run a flask server
-flask-cors : py -m pip install flask-cors
-    This allows your flask server to serve cross domain requests
+Today, we will be looking at some important commands in both a flask SERVER program, and a python CLIENT program.
 
-We will only be looking at the first part of the flaskServer.py file today, and serve a basic api endpoint that is accessible from within a web browser.  Later, more advanced applications can deny access to web browsers and only serve data to applications or webforms.
+### Server Considerations
+We need to include a couple new items. Look at the file postServer.py as your example.
 
+```from flask import request```
+This is required to retrieve the form data from your post request
+```payload = request.form```
+This is where we actually retrieve the payload from the request.  It does need to be converted to a dictionary for us to use.
 
-
-
-##### Assignment
-Create an API endpoint that serves GET requests to its root endpoint with a random quote, joke, fact or other piece of text information.  Your application will retrieve the contents of an sqlite database and then choose one random entry to display.
-You have some choices:
-    * retrieve all of the entries into memory and then choose 1 at random
-    * retrieve all of the entry id's and choose one at random, and then retrieve the entry that corresponds to that id
-
-You will also need the following programs:
-1. A program that lets you retrieve all of the entries and view them (for server admin maintenance)
-2. A program that will read a text file for new entries to the database, and enter them if they do not already exist.  Remember to search for your entry first before you add it to ensure that there are no duplicates.  hint: You can use the .split() method to split up the contents of a file into a list and iterate through the list to retrieve your entries
-3. The flask server program
-
-Extra:
-Make an endpoint that creates a "joke/quote/fact of the day" where it will only serve the same joke all day long.  You could make use of the time module and the time.time() command (which retrieves epoch time) but there other ways of doing this.
-
+## Client Considerations
+We need to import the requests module in order to mak a server request by GET or POST from a python program.
+One of the methods in the requests module is the .post() method.  While it has many important arguments/parameters, the most important one is the URL of the server.  Another optional argument is "data" which will include any form data that you need to send.  This is generally of a type tuple or list or dictionary.
+In our example file client.py we are making a post request using a dictionary.
 
