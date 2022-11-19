@@ -12,7 +12,7 @@ There are two standard methods by which a server can serve a request/response: G
 GET requests are the ones that are made in the URL, and are generally made using a browser. When you go to Google and search for cats, you can use this URL: https://www.google.com/search?q=cats  
 This is an example of a GET method, where the information to be sent is included in the URL.
 
-POST Requests are hidden. This is very important when you don't want sensitive data (such as passwords or cryptographic keys) to be displayed or visible in the URL.  We instead embed data inside the request itself which is received by the server.
+POST Requests are hidden. This is very important when you don't want sensitive data (such as passwords or cryptographic keys) to be displayed or visible in the URL.  We instead embed data inside the request itself which is received by the server.  The data that is sent is often called a *Payload*.  It usually consists of key-value pairs, much like we would see in a dictionary.  In fact, we can send a dictionary as the payload in a post request.  Note that only single level dictionaries can be sent....Dictionaries nested inside dictionaries do not work.
 
 Today, we will be looking at some important commands in both a flask SERVER program, and a python CLIENT program.
 
