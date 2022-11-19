@@ -8,7 +8,11 @@ payload = {
     'var1'  : "some data",
     'age'   : 20,
     'money' : 15.25,
-    'boolean' : True
+    'boolean' : True,
+    'multi' : {
+        'second' : 'level!'
+    },
+    'after' : 'nope'
 }
 
 response = requests.post(url,data=payload)

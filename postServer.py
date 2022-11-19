@@ -12,7 +12,7 @@ def postResponse():
     # a simple echo server that response with the payload received.
     payload = request.form
     data = dict(payload)
-
+    print(data)
     return json.dumps(data)
 
 
